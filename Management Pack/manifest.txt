@@ -1,8 +1,8 @@
 {
     "display_name": "DISPLAY_NAME",
-    "name": "iSDK_vKaan",
+    "name": "iSDK_vCommunityContent",
     "description": "DESCRIPTION",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "vcops_minimum_version": "8.10.0",
     "disk_space_required": 500,
     "run_scripts_on_all_nodes": "true",
@@ -12,7 +12,7 @@
         "Linux VA"
     ],
     "vendor": "VENDOR",
-    "pak_icon": "vKaan-Icon.png",
+    "pak_icon": "vCommunity-Content-Icon.png",
     "pak_validation_script": {
         "script": ""
     },
@@ -26,7 +26,7 @@
         "adapter.zip"
     ],
     "adapter_kinds": [
-        "vKaan"
+        "vCommunityContent"
     ],
     "license_type": ""
 }

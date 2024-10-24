@@ -1,10 +1,11 @@
-#  Copyright 2024 vKaan MP, vmbro.com
+#  Copyright 2024 vCommunity Content MP
 #  Author: Onur Yuzseven
+
 import atexit
 import json
 import sys
 import aria.ops.adapter_logging as logging
-import constants
+import constants.main
 from typing import Any
 from typing import List
 from typing import Optional
@@ -18,32 +19,31 @@ from aria.ops.suite_api_client import key_to_object
 from aria.ops.suite_api_client import SuiteApiClient
 from aria.ops.definition.units import Units
 from aria.ops.timer import Timer
-from constants import ADAPTER_KIND
-from constants import ADAPTER_NAME
 from pyVim.connect import Disconnect
 from pyVim.connect import SmartConnect
 from cluster import add_cluster_metrics
+
 
 logger = logging.getLogger(__name__)
 
 
 def get_adapter_definition() -> AdapterDefinition:
     with Timer(logger, "Get Adapter Definition"):
-        definition = AdapterDefinition(ADAPTER_KIND, ADAPTER_NAME)
+        definition = AdapterDefinition(constants.main.ADAPTER_KIND, constants.main.ADAPTER_NAME)
 
         definition.define_string_parameter(
-            constants.HOST_IDENTIFIER,
+            constants.main.HOST_IDENTIFIER,
             "vCenter Server",
             description="FQDN or IP address of the vCenter Server instance.",
         )
         definition.define_int_parameter(
-            constants.PORT_IDENTIFIER, "Port", default=443, advanced=True
+            constants.main.PORT_IDENTIFIER, "Port", default=443, advanced=True
         )
 
         # Define the credential definitions below. Use of credentials can be customised
         credential = definition.define_credential_type("vsphere_user", "Credential")
-        credential.define_string_parameter(constants.USER_CREDENTIAL, "User Name")
-        credential.define_password_parameter(constants.PASSWORD_CREDENTIAL, "Password")
+        credential.define_string_parameter(constants.main.USER_CREDENTIAL, "User Name")
+        credential.define_password_parameter(constants.main.PASSWORD_CREDENTIAL, "Password")
 
         # Define the object types
         CCR = definition.define_object_type("Cluster Compute Resource")
@@ -62,7 +62,7 @@ def get_adapter_definition() -> AdapterDefinition:
         DRS = clusterConfiguration.define_group("DRS Configuration")
         DRS.define_string_property("Proactive DRS")
         DRS.define_string_property("Scale Descendants Shares")
-        DRS.define_metric("DRS Score", unit=Units.RATIO.PERCENT)
+        DRS.define_metric("DRS Score")
 
         logger.debug(f"Returning adapter definition: {definition.to_json()}")
 
@@ -102,7 +102,7 @@ def collect(adapter_instance: AdapterInstance) -> CollectResult:
                 )
                 if adapter_instance_id is None:
                     result.with_error(
-                        f"No vCenter Adapter Instance found matching vCenter Server '{adapter_instance.get_identifier_value(constants.HOST_IDENTIFIER)}'"
+                        f"No vCenter Adapter Instance found matching vCenter Server '{adapter_instance.get_identifier_value(constants.main.HOST_IDENTIFIER)}'"
                     )
                     return result
                 add_cluster_metrics(client, adapter_instance_id, result, content)
@@ -125,10 +125,10 @@ def get_endpoints(adapter_instance: AdapterInstance) -> EndpointResult:
 def _get_service_instance(
     adapter_instance: AdapterInstance,
 ) -> Any:
-    host = adapter_instance.get_identifier_value(constants.HOST_IDENTIFIER)
-    port = int(adapter_instance.get_identifier_value(constants.PORT_IDENTIFIER, 443))
-    user = adapter_instance.get_credential_value(constants.USER_CREDENTIAL)
-    password = adapter_instance.get_credential_value(constants.PASSWORD_CREDENTIAL)
+    host = adapter_instance.get_identifier_value(constants.main.HOST_IDENTIFIER)
+    port = int(adapter_instance.get_identifier_value(constants.main.PORT_IDENTIFIER, 443))
+    user = adapter_instance.get_credential_value(constants.main.USER_CREDENTIAL)
+    password = adapter_instance.get_credential_value(constants.main.PASSWORD_CREDENTIAL)
 
     service_instance = SmartConnect(
         host=host, port=port, user=user, pwd=password, disableSslCertValidation=True
@@ -144,11 +144,11 @@ def _get_vcenter_adapter_instance_id(
 ) -> Optional[str]:
     ais: List[Object] = client.query_for_resources(
         {
-            "adapterKind": [constants.VCENTER_ADAPTER_KIND],
+            "adapterKind": [constants.main.VCENTER_ADAPTER_KIND],
             "resourceKind": ["VMwareAdapter Instance"],
         }
     )
-    vcenter_server = adapter_instance.get_identifier_value(constants.HOST_IDENTIFIER)
+    vcenter_server = adapter_instance.get_identifier_value(constants.main.HOST_IDENTIFIER)
     for ai in ais:
         logger.debug(
             f"Considering vCenter Adapter Instance with VCURL: {ai.get_identifier_value('VCURL')}"
