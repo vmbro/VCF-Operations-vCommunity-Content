@@ -1,17 +1,20 @@
 # VCF Operations vCommunity Content 
 
-It is a Aria Operations management pack for maintaining the configurations of your vSphere environments. This package vKaan allows you to monitor Cluster HA and DRS configurations and identify non-identical objects. It also detects vSphere DRS rule violations and generates alerts. By identifying rule violations it helps ensure that your vSphere environment remains stable, efficient and compliant for your desired state. You can find the original post here: [Broadcom Developer Portal](https://community.broadcom.com/developer-portal/viewdocument/vkaan-vsphere-health-check-aria?CommunityKey=d743a854-b7b6-437f-9698-4dd8983b11cf&tab=librarydocuments)
+This Aria Operations management pack lowers the knowledge barrier required to add your own content. While the MP Builder is better for quick and simple addition, a native management pack empowers you to build much more powerful features. 
+With programming and API knowledge, you can do the following:
+* Add your own object
+* Add your own metrics and properties. They can have complex logic as it's all done in programming. Attach them into existing object.
+* Add your own alerts, dashboards, reports. To override existing ones, simply use the same ID
+* Add your own super metric. This is handy if you want your users to be able to customise the formula, as super metric is editable.
+* Add your own widget. 
 
-![image](https://github.com/vmbro/vKaan/assets/6716206/34f4dd01-0fb7-4767-896e-6c4385336d9d)
-
-
-## vKaan Management Pack System Requirements
+## System Requirements
 ```
 * vSphere API version must be higher than 8.0.1.0 (vSphere 7.x versions are not supported)
-* Aria Operations Manager version must be the higher than 8.10.x
+* Aria Operations Manager 8.18. Advanced or Enterprise edition.
 ```
 
-## vKaan Management Pack Service Account User Permission Requirements
+## Management Pack Service Account User Permission Requirements
 ```
 * An account with read-only permission
 * Propagate to children option must be selected
