@@ -20,14 +20,16 @@ With some programming and API knowledge, you can do the following:
 * Propagate to children option must be selected
 ```
 
+## How To Contribute
+See [this](https://docs.google.com/document/d/1opONo0KLb61JRa7jW1wLkl5T8g-oXFWbHFan-n50bIg) 
+We host documentation at Google Docs as it's easier to format and collaborate.
+
   
 ## Support
-
 Submit an issue or contact me via [LinkedIn](https://www.linkedin.com/in/oyuzseven/)
 
 
 ## License
-
 [Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 [![MIT License](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
