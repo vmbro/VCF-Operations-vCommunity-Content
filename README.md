@@ -22,7 +22,8 @@ With some programming and API knowledge, you can do the following:
 
 ## How To Contribute
 See [this](https://docs.google.com/document/d/1opONo0KLb61JRa7jW1wLkl5T8g-oXFWbHFan-n50bIg) 
-We host documentation at Google Docs as it's easier to format and collaborate.
+
+We host documentation at Google Docs as it has better formatting and collaboration capabilities. We use GitHub only for the code.
 
   
 ## Support
