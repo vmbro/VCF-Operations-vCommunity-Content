@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><alertContent>
+    <AlertDefinitions>
+        <AlertDefinition adapterKind="VMWARE" description="The processes inside Windows or Linux are being queued. For optimal performance, the queue should be below 3 per virtual CPU, as per common guidance from both operating systems. This alert is set at a much higher number, so adjust as you deem appropriate.&#10;&#10;To avoid false positive, the alert is only triggered when the VM is doing high amount of work (set at 75%)" id="AlertDefinition-VMWARE-60f7361d-dedc-4b19-88ae-72b7bf91280b" name="Guest OS experiencing CPU queue" resourceKind="VirtualMachine" subType="19" type="15" waitCycle="2">
+            <State severity="automatic">
+                <SymptomSets operator="or">
+                    <SymptomSet applyOn="self" operator="and">
+                        <Symptom ref="SymptomDefinition-VMWARE-9d08733f-ff22-4e9f-b5bb-2d632389b963"/>
+                        <Symptom ref="SymptomDefinition-7df85c2a-7ac2-4695-8f5e-3dbc0331730f"/>
+                    </SymptomSet>
+                    <SymptomSet applyOn="self" operator="and">
+                        <Symptom ref="SymptomDefinition-VMWARE-b4bca285-dfbd-4726-9363-5a5c8e0fd47e"/>
+                        <Symptom ref="SymptomDefinition-d03c7491-db49-4d6a-a044-a5b1e31f79f5"/>
+                    </SymptomSet>
+                </SymptomSets>
+                <Impact key="health" type="badge"/>
+                <Recommendations>
+                    <Recommendation priority="1" ref="Recommendation-ud-ea02eb8d-41f8-4efa-9d11-ff83a46311b0"/>
+                </Recommendations>
+            </State>
+        </AlertDefinition>
+    </AlertDefinitions>
+    <SymptomDefinitions>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-d03c7491-db49-4d6a-a044-a5b1e31f79f5" name="Condition_3dd5b259-d415-4f99-a8fd-e05898b99f07" resourceKind="VirtualMachine" symptomDefType="condition_self">
+            <State severity="info">
+                <Condition key="cpu|net_run" operator="&gt;" thresholdType="static" type="metric" value="75.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+        <SymptomDefinition adapterKind="VMWARE" cancelCycle="3" id="SymptomDefinition-VMWARE-9d08733f-ff22-4e9f-b5bb-2d632389b963" name="Virtual Machine Peak vCPU Queue within collection cycle is greater than 10" resourceKind="VirtualMachine" symptomDefType="condition_self">
+            <State severity="immediate">
+                <Condition key="guest|20_sec_peak_cpu_queue" operator="&gt;" thresholdType="static" type="metric" value="10.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-7df85c2a-7ac2-4695-8f5e-3dbc0331730f" name="Condition_d36dae0b-87d7-486b-b058-74be7c63ef60" resourceKind="VirtualMachine" symptomDefType="condition_self">
+            <State severity="info">
+                <Condition key="cpu|net_run" operator="&gt;" thresholdType="static" type="metric" value="75.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+        <SymptomDefinition adapterKind="VMWARE" cancelCycle="3" id="SymptomDefinition-VMWARE-b4bca285-dfbd-4726-9363-5a5c8e0fd47e" name="Virtual Machine Peak vCPU Queue within collection cycle is greater than 20" resourceKind="VirtualMachine" symptomDefType="condition_self">
+            <State severity="critical">
+                <Condition key="guest|20_sec_peak_cpu_queue" operator="&gt;" thresholdType="static" type="metric" value="20.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+    </SymptomDefinitions>
+    <Recommendations>
+        <Recommendation key="Recommendation-ud-ea02eb8d-41f8-4efa-9d11-ff83a46311b0">
+            <Description>If the alert of high VM CPU contention is also triggered, then follow the remediation for this alert.&lt;br&gt;If the alert of high VM CPU consumption is also triggered, then follow the remediation for this alert.&lt;br&gt;If above 2 are false, look at the application on why it’s creating many threads. Compare the values with other software or code that are part of the larger business applications. Also, compare the value with the same software in other business applications. If the software is a commercial software from vendor, ask the vendor for the recommendation. &lt;br&gt;If you do not get the answer, exclude this application from this alert.</Description>
+        </Recommendation>
+    </Recommendations>
+</alertContent>
