@@ -1,0 +1,7 @@
+Snapshot:
+  metrics:
+    - Snapshot Count
+Configuration:
+  properties:
+    - Latency Sensitivity
+    - VM Age

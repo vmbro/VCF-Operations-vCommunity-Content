@@ -1,0 +1,11 @@
+Snapshot:
+  metrics:
+    - name: "diskspace|snapshot|Snapshot Count"
+Config:
+  properties:
+    - name: "Config|Latency Sensitivity"
+      configPath: "config.latencySensitivity.level"
+Age:
+  properties:
+    - name: "Config|VM Age"
+      configPath: "config.createDate"
