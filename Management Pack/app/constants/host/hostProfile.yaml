@@ -1,0 +1,8 @@
+Host Profile:
+  properties:
+    - name: "Config|Host Profile|Last Check Time (days ago)"
+      configPath: "complianceCheckResult.checkTime"
+    - name: "Config|Host Profile|Compliance Status"
+      configPath: "complianceCheckResult.complianceStatus"
+    - name: "Config|Host Profile|Profile Name"
+      configPath: "complianceCheckResult.profile.name"

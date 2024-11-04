@@ -1,0 +1,25 @@
+vSphereHA:
+  properties:
+    - name: "configuration|dasConfig|Host Monitoring"
+      configPath: "configuration.dasConfig.hostMonitoring"
+    - name: "configuration|dasConfig|Response \\ Host Isolation"
+      configPath: "configuration.dasConfig.defaultVmSettings.isolationResponse"
+    - name: "configuration|dasConfig|Response \\ Default VM Restart Priority"
+      configPath: "configuration.dasConfig.defaultVmSettings.restartPriority"
+    - name: "configuration|dasConfig|Response \\ Datastore APD"
+      configPath: "configuration.dasConfig.defaultVmSettings.vmComponentProtectionSettings.vmStorageProtectionForAPD"
+    - name: "configuration|dasConfig|Response \\ Datastore PDL"
+      configPath: "configuration.dasConfig.defaultVmSettings.vmComponentProtectionSettings.vmStorageProtectionForPDL"
+    - name: "configuration|dasConfig|VM Monitoring"
+      configPath: "configuration.dasConfig.vmMonitoring"
+    - name: "configuration|dasConfig|Heartbeat Datastore"
+      configPath: "configuration.dasConfig.hBDatastoreCandidatePolicy"
+DRS:
+  properties:
+    - name: "configuration|drsConfig|Proactive DRS"
+      configPath: "configurationEx.proactiveDrsConfig.enabled"
+    - name: "configuration|drsConfig|Scale Descendants Shares"
+      configPath: "configuration.drsConfig.scaleDescendantsShares"
+  metrics:
+    - name: "configuration|drsConfig|DRS Score (%)"
+      configPath: "summary.drsScore"

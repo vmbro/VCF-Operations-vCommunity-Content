@@ -1,11 +1,13 @@
 #  Copyright 2024 vCommunity Content MP
 #  Author: Onur Yuzseven
 
-import atexit
-import json
+import os
 import sys
-import aria.ops.adapter_logging as logging
+import json
+import yaml
+import atexit
 import constants.main
+import aria.ops.adapter_logging as logging
 from typing import Any
 from typing import List
 from typing import Optional
@@ -17,15 +19,19 @@ from aria.ops.result import EndpointResult
 from aria.ops.result import TestResult
 from aria.ops.suite_api_client import key_to_object
 from aria.ops.suite_api_client import SuiteApiClient
-from aria.ops.definition.units import Units
 from aria.ops.timer import Timer
 from pyVim.connect import Disconnect
 from pyVim.connect import SmartConnect
-from cluster import add_cluster_metrics
-
+from collectors.cluster.collectClusterData import collect_cluster_data
+from collectors.host.collectHostData import collect_host_data
+from collectors.vm.collectVMData import collect_vm_data
 
 logger = logging.getLogger(__name__)
 
+current_directory = os.path.dirname(os.path.abspath(__file__))
+clusterObjectTypes = os.path.join(current_directory, "constants/cluster/clusterObjectTypes.yaml")
+hostObjectTypes = os.path.join(current_directory, "constants/host/hostObjectTypes.yaml")
+vmObjectTypes = os.path.join(current_directory, "constants/vm/vmObjectTypes.yaml")
 
 def get_adapter_definition() -> AdapterDefinition:
     with Timer(logger, "Get Adapter Definition"):
@@ -45,28 +51,98 @@ def get_adapter_definition() -> AdapterDefinition:
         credential.define_string_parameter(constants.main.USER_CREDENTIAL, "User Name")
         credential.define_password_parameter(constants.main.PASSWORD_CREDENTIAL, "Password")
 
-        # Define the object types
-        CCR = definition.define_object_type("Cluster Compute Resource")
-        clusterConfiguration = CCR.define_group("Cluster Configuration")
-
-        # Define the metrics and properties below for object types
-        vSphereHA = clusterConfiguration.define_group("vSphere HA")
-        vSphereHA.define_string_property("Host Monitoring")
-        vSphereHA.define_string_property("Response \\\\ Host Isolation")
-        vSphereHA.define_string_property("Response \\\\ Default VM Restart Priority")
-        vSphereHA.define_string_property("Response \\\\ Datastore APD")
-        vSphereHA.define_string_property("Response \\\\ Datastore PDL")
-        vSphereHA.define_string_property("VM Monitoring")    
-        vSphereHA.define_string_property("Heartbeat Datastore")
-
-        DRS = clusterConfiguration.define_group("DRS Configuration")
-        DRS.define_string_property("Proactive DRS")
-        DRS.define_string_property("Scale Descendants Shares")
-        DRS.define_metric("DRS Score")
+        define_cluster_objects(clusterObjectTypes, definition)
+        define_host_objects(hostObjectTypes, definition)
+        define_vm_objects(vmObjectTypes, definition)
 
         logger.debug(f"Returning adapter definition: {definition.to_json()}")
 
     return definition
+
+def define_cluster_objects(clusterObjectTypes, definition):
+    with open(clusterObjectTypes, "r") as file:
+        data = yaml.safe_load(file)
+
+    clusterComputeResource = definition.define_object_type("Cluster Compute Resource")
+    clusterConfiguration = clusterComputeResource.define_group("Cluster Configuration")
+    for group_name, group_content in data.items():
+        if group_name == "vSphere HA":
+            vSphereHA = clusterConfiguration.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    vSphereHA.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    vSphereHA.define_metric(metric)
+
+        if group_name == "DRS":
+            drs = clusterConfiguration.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    drs.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    drs.define_metric(metric)
+
+        if group_name == "EVC":
+            evc = clusterConfiguration.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    evc.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    evc.define_metric(metric)
+
+
+def define_host_objects(hostObjectTypes, definition):
+    with open(hostObjectTypes, "r") as file:
+        data = yaml.safe_load(file)
+
+    HostSystem = definition.define_object_type("Host System")
+    configuration = HostSystem.define_group("Configuration")
+    for group_name, group_content in data.items():
+        if group_name == "Host Agent":
+            hostAgent = configuration.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    hostAgent.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    hostAgent.define_metric(metric)
+        if group_name == "Host Profile":
+            hostProfileGroup = configuration.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    hostProfileGroup.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    hostProfileGroup.define_metric(metric)
+
+
+def define_vm_objects(vmObjectTypes, definition):
+    with open(vmObjectTypes, "r") as file:
+        data = yaml.safe_load(file)
+
+    virtualMachine = definition.define_object_type("Virtual Machine")
+    diskSpace = virtualMachine.define_group("Disk Space")
+    for group_name, group_content in data.items():
+        if group_name == "Snapshot":
+            snapshot = diskSpace.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    snapshot.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    snapshot.define_metric(metric)
+
+        if group_name == "Configuration":
+            configuration = virtualMachine.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    configuration.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    configuration.define_metric(metric)
 
 
 def test(adapter_instance: AdapterInstance) -> TestResult:
@@ -105,7 +181,9 @@ def collect(adapter_instance: AdapterInstance) -> CollectResult:
                         f"No vCenter Adapter Instance found matching vCenter Server '{adapter_instance.get_identifier_value(constants.main.HOST_IDENTIFIER)}'"
                     )
                     return result
-                add_cluster_metrics(client, adapter_instance_id, result, content)
+                collect_cluster_data(client, adapter_instance_id, result, content)
+                collect_host_data(client, adapter_instance_id, result, content)
+                collect_vm_data(client, adapter_instance_id, result, content)
 
         except Exception as e:
             logger.error("Unexpected collection error")
