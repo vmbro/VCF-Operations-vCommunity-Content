@@ -1,0 +1,12 @@
+{"ad345475-262c-4f2e-8fa5-dbef75e09810": {
+   "resourceKinds": [{
+      "resourceKindKey": "Tier",
+      "adapterKindKey": "Container"
+   }],
+   "modificationTime": 1732950088114,
+   "name": "Business Application Tier Performance",
+   "formula": "avg(${adaptertype=VMWARE, objecttype=VirtualMachine, attribute=Super Metric|sm_9ee466de-616a-41a9-b573-e8513e646ea3, depth=1})",
+   "description": "Key Performance Indicator (%) of a Tier. A business application is made up of tiers, which in turn have VMs.\n\nLimitation: a business app must have 2 and 2 levels only. Biz App --> Tier --> VM.\n\nFor details, see VCF Operations Transformation book and vSphere Metrics book, which are parts of Operationalize Your World.",
+   "unitId": "percent",
+   "modifiedBy": "9124aca9-8198-4ae9-bd45-c0cc82204f83"
+}}

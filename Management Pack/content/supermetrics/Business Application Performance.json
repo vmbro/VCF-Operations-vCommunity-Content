@@ -1,0 +1,12 @@
+{"ca2bb2f8-9536-40bf-863e-c9b4e36b6952": {
+   "resourceKinds": [{
+      "resourceKindKey": "BusinessService",
+      "adapterKindKey": "Container"
+   }],
+   "modificationTime": 1732950088108,
+   "name": "Business Application Performance",
+   "formula": "max([   ${adaptertype=KubernetesAdapter, objecttype=K8S-Namespace, attribute=Performance|Performance, depth=2},    min(${adaptertype=Container, objecttype=Tier, attribute=Super Metric|sm_ad345475-262c-4f2e-8fa5-dbef75e09810, depth=1})])",
+   "description": "Key Performance Indicator (%) of a business application. A business application is made up of tiers, which in turn have VMs. For modern application, a business application maps to a K8 Namespace.\n\nLimitation for classic business app: it must have 2 and 2 levels only. Biz App --> Tier --> VM.\n\nFor details, see VCF Operations Transformation book and vSphere Metrics book, which are parts of Operationalize Your World.",
+   "unitId": "percent",
+   "modifiedBy": "9124aca9-8198-4ae9-bd45-c0cc82204f83"
+}}
