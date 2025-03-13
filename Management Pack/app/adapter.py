@@ -144,6 +144,16 @@ def define_vm_objects(vmObjectTypes, definition):
                 for metric in group_content["metrics"]:
                     configuration.define_metric(metric)
 
+        if group_name == "VM Agent":
+            configuration = virtualMachine.define_group("Configuration")
+            vmAgent = configuration.define_group(group_name)
+            if "properties" in group_content:
+                for property in group_content["properties"]:
+                    vmAgent.define_string_property(property)
+            if "metrics" in group_content:
+                for metric in group_content["metrics"]:
+                    vmAgent.define_metric(metric)
+
 
 def test(adapter_instance: AdapterInstance) -> TestResult:
     with Timer(logger, "Test connection"):
