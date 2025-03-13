@@ -1,0 +1,15 @@
+vmConfig:
+  - disk.EnableUUID
+  - migrate.hostLogState
+  - migrate.migrationId
+  - migrate.hostLog
+  - RemoteDisplay.maxConnections
+  - svga.autodetect
+  - svga.guestBackedPrimaryAware
+  - svga.present
+  - vmotion.checkpointFBSize
+  - vmotion.checkpointSVGAPrimarySize
+  - vmotion.svga.graphicsMemoryKB
+  - vmotion.svga.mobMaxSize
+  - vmware.tools.internalversion
+  - vmware.tools.requiredversion

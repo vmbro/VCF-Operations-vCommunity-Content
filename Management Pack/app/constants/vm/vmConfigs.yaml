@@ -5,6 +5,8 @@ Config:
   properties:
     - name: "Config|Latency Sensitivity"
       configPath: "config.latencySensitivity.level"
+    - name: "Config|Nested HV Enabled"
+      configPath: "config.nestedHVEnabled"
 Age:
   properties:
     - name: "Config|VM Age"
