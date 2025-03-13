@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 current_directory = os.path.dirname(os.path.abspath(__file__))
 vmExtraConfig = os.path.join(current_directory, "../../constants/vm/vmExtraConfig.yaml")
 
-def collect_vm_config_properties(vm_obj, vm):
+def collect_vm_extraconfig_properties(vm_obj, vm):
     with open(vmExtraConfig, "r") as file:
         data = yaml.safe_load(file)
     extraConfig = data.get("vmConfig", [])
