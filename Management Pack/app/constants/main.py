@@ -1,8 +1,8 @@
 #  Copyright 2024 vCommunity Content MP
 #  Author: Onur Yuzseven
 
-ADAPTER_KIND = "vCommunityContent"
-ADAPTER_NAME = "vCommunity Content"
+ADAPTER_KIND = "vSpherevCommunity"
+ADAPTER_NAME = "vSphere vCommunity"
 HOST_IDENTIFIER = "host"
 PORT_IDENTIFIER = "port"
 USER_CREDENTIAL = "user"

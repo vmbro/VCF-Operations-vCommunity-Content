@@ -1,8 +1,6 @@
-build
-images
 logs
-venv-vKaan
+build
 config.json
 connections.json
-vKaan-Icon.png
-Dockerfile
+venv-vSphere vCommunity
+

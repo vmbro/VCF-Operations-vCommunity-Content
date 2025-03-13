@@ -145,7 +145,7 @@ def define_vm_objects(vmObjectTypes, definition):
                     configuration.define_metric(metric)
 
         if group_name == "VM Agent":
-            configuration = virtualMachine.define_group("Configuration")
+            configuration = virtualMachine.define_group(group_name)
             vmAgent = configuration.define_group(group_name)
             if "properties" in group_content:
                 for property in group_content["properties"]:
