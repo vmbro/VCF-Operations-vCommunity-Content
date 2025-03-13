@@ -13,3 +13,5 @@ vmConfig:
   - vmotion.svga.mobMaxSize
   - vmware.tools.internalversion
   - vmware.tools.requiredversion
+  - my.Attribute
+  - nvram

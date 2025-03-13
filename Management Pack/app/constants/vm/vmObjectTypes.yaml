@@ -6,6 +6,7 @@ Configuration:
     - Latency Sensitivity
     - Nested HV Enabled
     - VM Age
+    - Max MKS Connections
 VM Agent:
   properties:
   - Disk Enable UUID
@@ -22,3 +23,4 @@ VM Agent:
   - vMotion SVGA mob Max Size
   - VMware Tools Internal Version
   - VMware Tools Required Version
+  - NVRAM

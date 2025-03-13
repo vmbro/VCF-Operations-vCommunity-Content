@@ -191,8 +191,8 @@ def collect(adapter_instance: AdapterInstance) -> CollectResult:
                         f"No vCenter Adapter Instance found matching vCenter Server '{adapter_instance.get_identifier_value(constants.main.HOST_IDENTIFIER)}'"
                     )
                     return result
-                collect_cluster_data(client, adapter_instance_id, result, content)
-                collect_host_data(client, adapter_instance_id, result, content)
+                #collect_cluster_data(client, adapter_instance_id, result, content)
+                #collect_host_data(client, adapter_instance_id, result, content)
                 collect_vm_data(client, adapter_instance_id, result, content)
 
         except Exception as e:
