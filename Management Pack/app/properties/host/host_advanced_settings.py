@@ -19,7 +19,3 @@ def collect_host_properties(host_obj, host):
     for advSettingsKey in commonKeys:
         advSettingsValue = advancedSettingsDict[advSettingsKey]
         host_obj.with_property(f"Config|Host Agent|{'|'.join(advSettingsKey.split('.'))}", advSettingsValue)
-    else:
-        logger.warning(
-                f"Could not find advanced setting '{advSettingsValue}'."
-            )

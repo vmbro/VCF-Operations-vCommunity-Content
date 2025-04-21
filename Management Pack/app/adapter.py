@@ -47,9 +47,20 @@ def get_adapter_definition() -> AdapterDefinition:
         )
 
         # Define the credential definitions below. Use of credentials can be customised
-        credential = definition.define_credential_type("vsphere_user", "Credential")
+        credential = definition.define_credential_type("vsphere_user", "vCenter Credential")
         credential.define_string_parameter(constants.main.USER_CREDENTIAL, "User Name")
         credential.define_password_parameter(constants.main.PASSWORD_CREDENTIAL, "Password")
+        credential.define_string_parameter("winUser", "Windows User Name", required=False)
+        credential.define_password_parameter("winPass", "Windows Password", required=False)
+
+        definition.define_enum_parameter("serviceMonitoring",
+            values=["Yes", "No"],
+            label="Service Monitoring Enabled",
+            description="Choose Yes to enable Service Monitoring",
+            default="No",
+            required=False,
+            advanced=True
+        )
 
         define_cluster_objects(clusterObjectTypes, definition)
         define_host_objects(hostObjectTypes, definition)
@@ -58,6 +69,15 @@ def get_adapter_definition() -> AdapterDefinition:
         logger.debug(f"Returning adapter definition: {definition.to_json()}")
 
     return definition
+
+def get_winCredential(adapter_instance: AdapterInstance) -> str:
+    username = adapter_instance.get_credential_value("winUser")
+    password = adapter_instance.get_credential_value("winPass")
+    return username, password
+
+def getServiceMonitoringStatus(adapter_instance: AdapterInstance) -> str:
+    serviceMonitoringStatus = adapter_instance.get_identifier_value("serviceMonitoring")
+    return serviceMonitoringStatus
 
 def define_cluster_objects(clusterObjectTypes, definition):
     with open(clusterObjectTypes, "r") as file:
@@ -117,6 +137,9 @@ def define_host_objects(hostObjectTypes, definition):
             if "metrics" in group_content:
                 for metric in group_content["metrics"]:
                     hostProfileGroup.define_metric(metric)
+    
+    SoftwarePackages = configuration.define_group("Software Packages")
+    SoftwarePackages.define_string_property("Package Name")
 
 
 def define_vm_objects(vmObjectTypes, definition):
@@ -154,6 +177,10 @@ def define_vm_objects(vmObjectTypes, definition):
                 for metric in group_content["metrics"]:
                     vmAgent.define_metric(metric)
 
+    summary = virtualMachine.define_group("Summary")
+    guest = summary.define_group("Guest")
+    services = guest.define_group("Services")
+    services.define_string_property("Service Name")
 
 def test(adapter_instance: AdapterInstance) -> TestResult:
     with Timer(logger, "Test connection"):
@@ -181,7 +208,9 @@ def collect(adapter_instance: AdapterInstance) -> CollectResult:
             service_instance = _get_service_instance(adapter_instance)
             content = service_instance.RetrieveContent()
             logger.error(f"taskManager: {content.taskManager}")
-
+            ServiceMonitoringStatus = getServiceMonitoringStatus(adapter_instance)
+            winUser, winPassword = get_winCredential(adapter_instance)
+            
             with adapter_instance.suite_api_client as client:
                 adapter_instance_id = _get_vcenter_adapter_instance_id(
                     client, adapter_instance
@@ -193,7 +222,7 @@ def collect(adapter_instance: AdapterInstance) -> CollectResult:
                     return result
                 collect_cluster_data(client, adapter_instance_id, result, content)
                 collect_host_data(client, adapter_instance_id, result, content)
-                collect_vm_data(client, adapter_instance_id, result, content)
+                collect_vm_data(client, adapter_instance_id, result, content, ServiceMonitoringStatus, winUser, winPassword)
 
         except Exception as e:
             logger.error("Unexpected collection error")

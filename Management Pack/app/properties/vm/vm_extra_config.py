@@ -19,7 +19,3 @@ def collect_vm_extraconfig_properties(vm_obj, vm):
     for extraConfigKey in commonKeys:
         extraConfigValue = extraConfigDict[extraConfigKey]
         vm_obj.with_property(f"Config|VM Agent|{'|'.join(extraConfigKey.split('.'))}", extraConfigValue)
-    else:
-        logger.warning(
-                f"Could not find advanced setting '{extraConfigValue}'."
-            )
