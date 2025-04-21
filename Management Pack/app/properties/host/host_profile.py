@@ -25,9 +25,9 @@ def collect_host_profile_properties(host_obj, host):
                     keys = configPath.split('.')
                     propertyValue = host
                     for key in keys:
-                        propertyValue = getattr(propertyValue, key)
+                        propertyValue = getattr(propertyValue, key) or NULL_STATUS
                     if configPath == "complianceCheckResult.checkTime":
-                        propertyValue = getLastCheckAge(propertyValue)
+                        propertyValue = getLastCheckAge(propertyValue) or NULL_STATUS
                     host_obj.with_property(propertyName, str(propertyValue))                    
                 else:
                     host_obj.with_property(propertyName, NULL_STATUS)

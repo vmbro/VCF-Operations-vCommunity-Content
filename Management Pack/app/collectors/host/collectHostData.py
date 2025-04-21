@@ -11,6 +11,7 @@ from constants.main import VCENTER_ADAPTER_KIND
 from pyVmomi import vim
 from properties.host.host_advanced_settings import collect_host_properties
 from properties.host.host_profile import collect_host_profile_properties
+from properties.host.host_software_packages import collect_host_software_properties
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +49,7 @@ def collect_host_data(
         if host_obj:
             collect_host_properties(host_obj, host)
             collect_host_profile_properties(host_obj, host)
+            collect_host_software_properties(host_obj, host)
             result.add_object(host_obj)
         else:
             logger.warning(
