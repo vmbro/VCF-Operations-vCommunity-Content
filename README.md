@@ -6,7 +6,7 @@
 
 
 
-# VCF Operations vCommunity Content 
+# VCF Operations vSphere vCommunity 
 
 This management pack lowers the knowledge barrier required to add your own content to Aria Operations. While the MP Builder is better for quick and simple addition, a native management pack empowers you to build more powerful features. 
 With some programming and API knowledge, you can do the following:
