@@ -6,9 +6,9 @@
 
 
 
-# VCF Operations vSphere vCommunity 
+# VCF Operations vCommunity 
 
-This management pack lowers the knowledge barrier required to add your own content to Aria Operations. While the MP Builder is better for quick and simple addition, a native management pack empowers you to build more powerful features. 
+This management pack lowers the knowledge barrier required to add your own content to VCF Operations. While the MP Builder is better for quick and simple addition, a native management pack empowers you to build more powerful features. 
 With some programming and API knowledge, you can do the following:
 * Add your own object
 * Add your own metrics and properties. They can have complex logic as it's all done in programming. Attach them into existing object.
@@ -19,7 +19,7 @@ With some programming and API knowledge, you can do the following:
 ## System Requirements
 ```
 * vSphere API version must be higher than 8.0.1.0 (vSphere 7.x versions are not supported)
-* Aria Operations Manager 8.18. Advanced or Enterprise edition.
+* Aria Operations 8.18. Advanced or Enterprise edition.
 ```
 
 ## Management Pack Service Account User Permission Requirements
