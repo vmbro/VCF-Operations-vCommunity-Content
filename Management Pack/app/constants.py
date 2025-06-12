@@ -1,0 +1,2 @@
+ADAPTER_KIND = "aa"
+ADAPTER_NAME = "a"

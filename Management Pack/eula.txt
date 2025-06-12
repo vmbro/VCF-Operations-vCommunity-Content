@@ -1,5 +1,5 @@
-## EULA - vSphere vCommunity Management Pack ##
+## EULA - VCF Operations vCommunity Management Pack ##
 
-vSphere vCommunity is an open-source management pack for VCF Operations. Feel free to use and explore it in your environment! Dive in, experiment, and have fun with it—your feedback helps us improve.
+VCF Operations vCommunity is an open-source management pack for VCF Operations. Feel free to use and explore it in your environment! Dive in, experiment, and have fun with it—your feedback helps us improve.
 
 Enjoy! (:

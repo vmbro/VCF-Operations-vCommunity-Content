@@ -58,7 +58,7 @@ def collect_vm_data(
             collect_vm_extraconfig_properties(vm_obj, vm)
             if str(ServiceMonitoringStatus) == "Yes":
                 collect_vm_service_properties(vm_obj, vm, content, winUser, winPassword)
-                logger.info(f"Service Monitoring is enabled. vSphere vCommunity will start service monitoring. Service Monitoring Status: {ServiceMonitoringStatus}")
+                logger.info(f"Service Monitoring is enabled. VCF Operations vCommunity will start service monitoring. Service Monitoring Status: {ServiceMonitoringStatus}")
             else:
                 logger.debug(f"Service Monitoring is disabled. Service collection will not started. Service Monitoring Status: {ServiceMonitoringStatus}")
             result.add_object(vm_obj)

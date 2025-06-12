@@ -2,5 +2,4 @@ logs
 build
 config.json
 connections.json
-venv-vSphere vCommunity
-
+venv-VCF Operations vCommunity

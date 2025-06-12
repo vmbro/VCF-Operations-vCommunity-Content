@@ -1,8 +1,8 @@
 #  Copyright 2024 vCommunity Content MP
 #  Author: Onur Yuzseven
 
-ADAPTER_KIND = "vSpherevCommunity"
-ADAPTER_NAME = "vSphere vCommunity"
+ADAPTER_KIND = "VCFOperationsvCommunity"
+ADAPTER_NAME = "VCF Operations vCommunity"
 HOST_IDENTIFIER = "host"
 PORT_IDENTIFIER = "port"
 USER_CREDENTIAL = "user"
