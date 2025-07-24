@@ -1,4 +1,4 @@
-   "400106ec-879f-46d7-a03b-d3781072cfa2": {
+{   "400106ec-879f-46d7-a03b-d3781072cfa2": {
       "resourceKinds": [{
          "resourceKindKey": "vSphere World",
          "adapterKindKey": "VMWARE"
@@ -10,3 +10,4 @@
       "unitId": "",
       "modifiedBy": "01af3caf-a30f-4082-812d-b2909b743483"
    }
+}
