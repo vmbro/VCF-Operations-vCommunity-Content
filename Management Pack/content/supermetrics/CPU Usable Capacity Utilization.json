@@ -1,0 +1,12 @@
+{"99152539-e2c3-473d-a4bf-26fc56988f50": {
+   "resourceKinds": [{
+      "resourceKindKey": "ClusterComputeResource",
+      "adapterKindKey": "VMWARE"
+   }],
+   "modificationTime": 1753166113837,
+   "name": "CPU Usable Capacity Utilization",
+   "formula": "avg(${adaptertype=VMWARE, objecttype=HostSystem, attribute=cpu|utilization_average, depth=1}) *  ${this, metric=cpu|capacity_provisioned} /${this, metric=cpu|haTotalCapacity_average} ",
+   "description": "Imaginary physical thread utilization, as it takes into account the vSphere Cluster HA and Buffer. This would be the utilization against the cluster usable capacity. It is designed for capacity, not performance.\n\nIt's more accurate than using Usage, but it needs to be complemented with contention metric. There is performance impact once all usable cores are fully utilized",
+   "unitId": "percent",
+   "modifiedBy": "8a399472-453b-435f-b57d-84aa33550d08"
+}}

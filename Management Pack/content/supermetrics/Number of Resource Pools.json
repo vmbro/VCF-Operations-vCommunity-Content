@@ -1,0 +1,12 @@
+{"44e2c78f-8332-4f16-ba3a-eed89a6d24d5": {
+   "resourceKinds": [{
+      "resourceKindKey": "ClusterComputeResource",
+      "adapterKindKey": "VMWARE"
+   }],
+   "modificationTime": 1753166106289,
+   "name": "Number of Resource Pools",
+   "formula": "count(${adaptertype=VMWARE, objecttype=ResourcePool, attribute=badge|health, depth=3})",
+   "description": "Total number of resource pools ",
+   "unitId": "",
+   "modifiedBy": "8a399472-453b-435f-b57d-84aa33550d08"
+}}

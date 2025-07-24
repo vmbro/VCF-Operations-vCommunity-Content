@@ -1,0 +1,12 @@
+{"2c3a09ab-96c7-46f1-9ebe-a9b275cf1ead": {
+   "resourceKinds": [{
+      "resourceKindKey": "ClusterComputeResource",
+      "adapterKindKey": "VMWARE"
+   }],
+   "modificationTime": 1753166106227,
+   "name": "Cascading Resource Pools",
+   "formula": "count(${adaptertype=VMWARE, objecttype=ResourcePool, attribute=badge|health, depth=5}) - count(${adaptertype=VMWARE, objecttype=ResourcePool, attribute=badge|health, depth=1})",
+   "description": "The number of Level 2 or deeper resource pools. Cascading RP increases complexity of both capacity monitoring and performance troubleshooting",
+   "unitId": "",
+   "modifiedBy": "8a399472-453b-435f-b57d-84aa33550d08"
+}}

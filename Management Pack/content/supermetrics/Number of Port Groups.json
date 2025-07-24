@@ -1,0 +1,12 @@
+{"48a5dd9e-6caf-4590-bca4-95072c5554f1": {
+   "resourceKinds": [{
+      "resourceKindKey": "VmwareDistributedVirtualSwitch",
+      "adapterKindKey": "VMWARE"
+   }],
+   "modificationTime": 1753166113831,
+   "name": "Number of Port Groups",
+   "formula": "count(${adaptertype=VMWARE, objecttype=DistributedVirtualPortgroup, attribute=badge|health, depth=1})",
+   "description": "Count of port groups in a distributed switch",
+   "unitId": "",
+   "modifiedBy": "8a399472-453b-435f-b57d-84aa33550d08"
+}}
