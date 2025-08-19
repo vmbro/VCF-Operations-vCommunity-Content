@@ -1,0 +1,2160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Content>
+        
+    <Views>
+                
+        <ViewDef id="e2ccf269-9772-4d07-a71c-1df10d69285c">
+                        
+            <Title>Report: vSphere Pod for CSV export</Title>
+                        
+            <Description>A simple table for export as a CSV file. Used in report only, hence it has no formatting. Just like the rest of the report, it is designed for weekly, not daily nor monthly. 
+
+Schedule it to run end of the week, such as Sunday 23:59</Description>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="Pod" type="descendant"/>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="Pod" type="self"/>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="VirtualMachine" type="descendant"/>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="VirtualMachine" type="self"/>
+                        
+            <Usage>dashboard</Usage>
+                        
+            <Usage>report</Usage>
+                        
+            <Usage>details</Usage>
+                        
+            <Usage>content</Usage>
+                        
+            <Controls>
+                                
+                <Control id="time-interval-selector_id_547" type="time-interval-selector" visible="false">
+                                        
+                    <Property name="advancedTimeMode" value="false"/>
+                                        
+                    <Property name="unit" value="DAYS"/>
+                                        
+                    <Property name="count" value="7"/>
+                                    
+                </Control>
+                                
+                <Control id="attributes-selector_id_548" type="attributes-selector" visible="false">
+                                        
+                    <Property name="attributeInfos">
+                                                
+                        <List>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|guest|hostName"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Hostname"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|guest|ipAddress"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="IP Address"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|createDate"/>
+                                        
+                                    <Property name="preferredUnitId" value="auto"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="TIMESTAMP"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Creation Date"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|version"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="HW Version"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|guest|fullName"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Guest OS from Tools"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|guestFullName"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Guest OS from vCenter"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|running"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Running?"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|guest|toolsRunningStatus"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Tools Running"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|guest|toolsVersion"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Tools Version"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|guest|toolsVersionStatus2"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Tools Version Status"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|hardware|numCpu"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="CPU"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="cpu|vm_capacity_provisioned"/>
+                                        
+                                    <Property name="preferredUnitId" value="ghz"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="CPU Capacity"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|cpuAllocation|reservation"/>
+                                        
+                                    <Property name="preferredUnitId" value="ghz"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="CPU Reservation"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|cpuAllocation|limit"/>
+                                        
+                                    <Property name="preferredUnitId" value="ghz"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="CPU Limit"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|extraConfig|vcpu_hotadd"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="CPU Hot Add"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|extraConfig|vcpu_hotremove"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="CPU Hot Remove"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="guest|20_sec_peak_contextSwapRate_latest"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="CPU Context Switch"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="guest|20_sec_peak_cpu_queue"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="CPU Queue"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="cpu|net_run"/>
+                                        
+                                    <Property name="preferredUnitId" value="percent"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="CPU Run"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="cpu|vcpu_usage_disparity"/>
+                                        
+                                    <Property name="preferredUnitId" value="percent"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="CPU Usage Disparity"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="cpu|20_sec_peak_readyPct"/>
+                                        
+                                    <Property name="preferredUnitId" value="percent"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="CPU Ready"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="cpu|20_sec_peak_costopPct"/>
+                                        
+                                    <Property name="preferredUnitId" value="percent"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="CPU CoStop"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|hardware|memoryKB"/>
+                                        
+                                    <Property name="preferredUnitId" value="gb"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Memory Capacity"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|memoryAllocation|limit"/>
+                                        
+                                    <Property name="preferredUnitId" value="gb"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Memory Limit"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|memoryAllocation|reservation"/>
+                                        
+                                    <Property name="preferredUnitId" value="gb"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Memory Reservation"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|extraConfig|mem_hotadd"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Memory Hot Add"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="guest|20_sec_peak_page.outRate_latest"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Memory Paging Rate"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="guest|mem.free_latest"/>
+                                        
+                                    <Property name="preferredUnitId" value="gb"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="5"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Memory Free"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|numVMDKsOnly"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="VMDK"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|numRDMs"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="RDM"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="config|hardware|diskSpace"/>
+                                        
+                                    <Property name="preferredUnitId" value="gb"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Disk Space"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="guestfilesystem|percentage_total"/>
+                                        
+                                    <Property name="preferredUnitId" value="percent"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Filesystem Utilization"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="guest|disk_queue"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Disk Queue"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="virtualDisk:Aggregate of all instances|numberReadAveraged_average"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Reads/sec"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="virtualDisk:Aggregate of all instances|numberWriteAveraged_average"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Writes/sec"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="virtualDisk:Aggregate of all instances|totalReadLatency_average"/>
+                                        
+                                    <Property name="preferredUnitId" value="msec"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Read Latency"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="virtualDisk:Aggregate of all instances|totalWriteLatency_average"/>
+                                        
+                                    <Property name="preferredUnitId" value="msec"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Write Latency"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="virtualDisk:Aggregate of all instances|usage"/>
+                                        
+                                    <Property name="preferredUnitId" value="mbps"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Throughput"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|config|numEthernetCards"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="NIC Count"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="net|20_sec_peak_usage_average"/>
+                                        
+                                    <Property name="preferredUnitId" value="gbitsps"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="percentile" value="95"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="PERCENTILE"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Net Usage"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="vmop|vmotion|total_successes"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="vMotion"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="OnlineCapacityAnalytics|capacityRemainingPercentage"/>
+                                        
+                                    <Property name="preferredUnitId" value="percent"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Capacity Remaining"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="OnlineCapacityAnalytics|timeRemaining"/>
+                                        
+                                    <Property name="preferredUnitId" value="day"/>
+                                        
+                                    <Property name="isStringAttribute" value="false"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpType" value="NONE"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="false"/>
+                                        
+                                    <Property name="displayName" value="Time Remaining"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|datastore"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Datastore"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|tag"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="vSphere Tag"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|folder"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Folder"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|parentCluster"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Parent Cluster"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="objectType" value="RESOURCE"/>
+                                        
+                                    <Property name="attributeKey" value="summary|parentDatacenter"/>
+                                        
+                                    <Property name="isStringAttribute" value="true"/>
+                                        
+                                    <Property name="adapterKind" value="VMWARE"/>
+                                        
+                                    <Property name="resourceKind" value="VirtualMachine"/>
+                                        
+                                    <Property name="rollUpCount" value="0"/>
+                                        
+                                    <Property name="transformations">
+                                                
+                                        <List>
+                                                        
+                                            <Item value="CURRENT"/>
+                                                    
+                                        </List>
+                                            
+                                    </Property>
+                                        
+                                    <Property name="isProperty" value="true"/>
+                                        
+                                    <Property name="displayName" value="Parent Datacenter"/>
+                                        
+                                    <Property name="addTimestampAsColumn" value="false"/>
+                                        
+                                    <Property name="isShowRelativeTimestamp" value="false"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                    
+                        </List>
+                                            
+                    </Property>
+                                    
+                </Control>
+                                
+                <Control id="buckets-control_id_549" type="buckets-control" visible="false">
+                                        
+                    <Property name="maxValue" value="0"/>
+                                        
+                    <Property name="minValue" value="0"/>
+                                        
+                    <Property name="dynamicCalcFunction" value="SIMPLEMAXMIN"/>
+                                        
+                    <Property name="bucketInfos">
+                                                
+                        <List>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="startValue" value="0"/>
+                                        
+                                    <Property name="endValue" value="1000"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="startValue" value="1001"/>
+                                        
+                                    <Property name="endValue" value="2000"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="startValue" value="2001"/>
+                                        
+                                    <Property name="endValue" value="3000"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="startValue" value="3001"/>
+                                        
+                                    <Property name="endValue" value="4000"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                        
+                            <Item>
+                                
+                                <Value>
+                                        
+                                    <Property name="startValue" value="4001"/>
+                                        
+                                    <Property name="endValue" value="40020"/>
+                                    
+                                </Value>
+                                                            
+                            </Item>
+                                                    
+                        </List>
+                                            
+                    </Property>
+                                        
+                    <Property name="isDynamic" value="false"/>
+                                        
+                    <Property name="isSum" value="false"/>
+                                    
+                </Control>
+                                
+                <Control id="pagination-control_id_550" type="pagination-control" visible="true">
+                                        
+                    <Property name="start" value="0"/>
+                                        
+                    <Property name="size" value="50"/>
+                                    
+                </Control>
+                                
+                <Control id="metadata_id_551" type="metadata" visible="false">
+                                        
+                    <Property name="maxPointsCount" value="5000"/>
+                                        
+                    <Property name="distributionColor" value="6870C4"/>
+                                        
+                    <Property name="hideObjectNameColumn" value="false"/>
+                                        
+                    <Property name="listTopResultSize" value="-1"/>
+                                    
+                </Control>
+                            
+            </Controls>
+                        
+            <DataProviders>
+                                
+                <DataProvider dataType="list-view" id="list-view_id_546"/>
+                            
+            </DataProviders>
+                        
+            <Presentation type="list"/>
+                    
+        </ViewDef>
+            
+    </Views>
+        
+    <Reports>
+                
+        <ReportDef id="33ffc523-2bd1-4e87-b9df-3fe804544122">
+                        
+            <isTenant>false</isTenant>
+                        
+            <Title>VOA - vSphere Pod for CSV Export</Title>
+                        
+            <Description>This CSV file is part of VCF Optimization Assessment. It's not a standalone file. Use it together with the other CSV export as each file only covers 1 object.  
+
+It's designed for further analysis in a spreadsheet. 
+
+To see for the whole environment, run this against vSphere World object. To see specific vCenter or vCenter Data Center, choose the object.
+
+Tailor this large view by removing unnecessary columns. </Description>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="Pod" type="descendant"/>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="Pod" type="self"/>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="VirtualMachine" type="descendant"/>
+                        
+            <SubjectType adapterKind="VMWARE" resourceKind="VirtualMachine" type="self"/>
+                        
+            <Sections>
+                                
+                <Section>
+                                        
+                    <ContentType>View</ContentType>
+                                        
+                    <ContentKey>e2ccf269-9772-4d07-a71c-1df10d69285c</ContentKey>
+                                        
+                    <ContentOrientation>Portrait</ContentOrientation>
+                                        
+                    <ContentFormatting>
+                                                
+                        <ColorizeListView>false</ColorizeListView>
+                                            
+                    </ContentFormatting>
+                                    
+                </Section>
+                            
+            </Sections>
+                        
+            <Settings>
+                                
+                <ShowPageFooter>false</ShowPageFooter>
+                                
+                <OutputFormat>csv</OutputFormat>
+                            
+            </Settings>
+                    
+        </ReportDef>
+            
+    </Reports>
+    
+</Content>
