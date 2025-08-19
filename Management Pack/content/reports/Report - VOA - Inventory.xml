@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Content>
+        
+    <Reports>
+                
+        <ReportDef id="d39f4796-f20c-4b36-8525-4759febb4daa">
+                        
+            <isTenant>false</isTenant>
+                        
+            <Title>VOA - Inventory</Title>
+                        
+            <Description>This report is part of VCF Optimization Assessment. It's not a standalone report. Use it together with the other VOA reports and Inventory suite of dashboards. 
+
+It's designed for a VCF Consultant to explain and walkthrough with customers, as part of health review. It's not a DIY report to be read on a regular basis and compare with previous run.
+
+To see for the whole environment, run this against vSphere World object. To see specific vCenter or vCenter Data Center, choose the object.
+
+Tailor this report to highlight items that need attention. One way to do is by applying filters on relevant widgets. Filter out up to date settings, or only show outdated versions.</Description>
+                        
+            <Sections>
+                                
+                <Section>
+                                        
+                    <ContentType>CoverPage</ContentType>
+                                        
+                    <ContentKey>COVER_PAGE</ContentKey>
+                                        
+                    <ContentFormatting>
+                                                
+                        <ColorizeListView>false</ColorizeListView>
+                                                
+                        <FontColor>000000</FontColor>
+                                            
+                    </ContentFormatting>
+                                    
+                </Section>
+                                
+                <Section>
+                                        
+                    <ContentType>TableOfContents</ContentType>
+                                        
+                    <ContentKey>TABLE_OF_CONTENTS</ContentKey>
+                                    
+                </Section>
+                                
+                <Section>
+                                        
+                    <ContentType>Dashboard</ContentType>
+                                        
+                    <ContentKey>1fa82396-68ad-4eef-a1f2-3fce6df8274d</ContentKey>
+                                        
+                    <ContentOrientation>Landscape</ContentOrientation>
+                                    
+                </Section>
+                                
+                <Section>
+                                        
+                    <ContentType>Dashboard</ContentType>
+                                        
+                    <ContentKey>c32894fc-f375-4f4d-b486-9f10473dc82b</ContentKey>
+                                        
+                    <ContentOrientation>Landscape</ContentOrientation>
+                                    
+                </Section>
+                                
+                <Section>
+                                        
+                    <ContentType>Dashboard</ContentType>
+                                        
+                    <ContentKey>6a61ab77-3d45-4c93-b932-1c67640e29b1</ContentKey>
+                                        
+                    <ContentOrientation>Landscape</ContentOrientation>
+                                    
+                </Section>
+                                
+                <Section>
+                                        
+                    <ContentType>Dashboard</ContentType>
+                                        
+                    <ContentKey>e750120d-c5b6-4fda-8e98-dc00e1f3f39c</ContentKey>
+                                        
+                    <ContentOrientation>Landscape</ContentOrientation>
+                                    
+                </Section>
+                                
+                <Section>
+                                        
+                    <ContentType>Dashboard</ContentType>
+                                        
+                    <ContentKey>aba3330a-fca1-430d-851c-cbb7e1be75bf</ContentKey>
+                                        
+                    <ContentOrientation>Landscape</ContentOrientation>
+                                    
+                </Section>
+                            
+            </Sections>
+                        
+            <Settings>
+                                
+                <ShowPageFooter>false</ShowPageFooter>
+                                
+                <OutputFormat>pdf</OutputFormat>
+                            
+            </Settings>
+                    
+        </ReportDef>
+            
+    </Reports>
+    
+</Content>
