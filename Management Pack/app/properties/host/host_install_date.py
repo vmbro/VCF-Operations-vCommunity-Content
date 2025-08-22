@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)
 
-def collect_host_software_properties(host_obj, host):
+def collect_host_install_date(host_obj, host):
     imageConfigManager = host.configManager.imageConfigManager
     if imageConfigManager:
         try:
